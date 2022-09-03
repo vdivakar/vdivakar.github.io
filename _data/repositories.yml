@@ -1,12 +1,13 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - vdivakar
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - vdivakar/Colab-SSH-and-GDrive
+  - dovahcrow/patchify.py
+  - vdivakar/Papers-Stack
+  - vdivakar/mnistMuddle
+  - vdivakar/curves-intersection-with-gradient-descent
+  - vdivakar/Articles-Collection
+  - vdivakar/azureTTS
+  - vdivakar/Restore-trained-weights-after-network-modification
+  - vdivakar/Batch-Normalization-in-TensorFlow
