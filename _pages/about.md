@@ -13,7 +13,7 @@ profile:
       <center>
           <a href="https://www.linkedin.com/in/divakar-verma">LinkedIn</a> | 
           <a href="https://github.com/vdivakar">GitHub</a> |
-          <a href="divakarv96@gmail.com">Email</a>
+          <a href="mailto:divakarv96@gmail.com">Email</a>
       </center>
 
 news: true  # includes a list of news items
