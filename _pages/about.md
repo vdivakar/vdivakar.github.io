@@ -10,9 +10,14 @@ profile:
   image_circular: false # crops the image to make it circular
   address: >
       <center>United States</center>
+      <center>
+          <a href="https://www.linkedin.com/in/divakar-verma">LinkedIn</a> | 
+          <a href="https://github.com/vdivakar">GitHub</a> |
+          <a href="divakarv96@gmail.com">Email</a>
+      </center>
 
 news: true  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
