@@ -1,97 +1,90 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+- title: Divakar Verma
+  # type: map
+  # contents:
+    # - name: Full Name
+    #   value: Divakar Verma
+    # - name: Date of Birth
+    #   value: 14th March 1879
+    # - name: Languages
+    #   value: English, German
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Computer Vision Specialization
+      institution: Princeton University, US
+      year: 2022
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
+        - title: COS 529 Advanced Computer Vision
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+            - 3D vision, recognition and recent research methods.
+        - title: COS 597B Recent Advanced in Computer Vision
+          contents:
+            - Robustness, transparency and fairness of CV systems.
+    - title: Masters in Computer Science
+      institution: Rutgers University, New Brunswick, US
+      year: 2021
+      # description:
+      #   - Description 1.
+      #   - Description 2.
+    - title: Bachelors in Computer Science
+      institution: BITS Pilani, Pilani
+      year: 2014-18
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Deep Learning Performance Engineer, Inference (Intern)
+      institution: Nvidia
+      year: 2022
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+        - Develop highly optimised inferencing for deep learning model.
+        - <a href="https://www.linkedin.com/posts/divakar-verma_serving-rnn-t-speech-to-text-model-on-triton-activity-6972944540781395968-PDbx?utm_source=share&utm_medium=member_desktop">Internship Poster</a>
+    
+    - title: SDE-2 (ML)
+      institution: Flipkart Inc. (Walmart's subsidiary)
+      year: 2021
       description:
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    - title: Software engineer (Camera and Imaging)
+      institution: Samsung R&D Institute Bangalore
+      year: 2018-20
 
-- title: Open Source Projects
+- title: Patent
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: <a href="https://patents.justia.com/inventor/divakar-verma">ELECTRONIC DEVICE AND METHOD FOR CONTROLLING ELECTRONIC DEVICE</a>
+      year: 2020
+      description: Novel Super Slow Motion (SSM) capture using software assisted trigger via motion identification maps of region of interest (ROI) frames. Joint inventor for SSM project commercialization in mid-tier smartphones at SRI-B.
 
-- title: Honors and Awards
+- title: Paper
   type: time_table
   contents:
-    - year: 1921
-      items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      items: 
-        - Max Planck Medal
+    - title: <a href="https://link.springer.com/chapter/10.1007/978-981-15-4018-9_16">Deep Demosaicing Using ResNet-Bottleneck Architecture</a>
+      year: 1921
+      description: CNN based deep learning model for de-mosaicing raw camera sensor data into an RGB image.
+    # - year: 2029
+    #   items: 
+    #     - Max Planck Medal
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
+- title: Skills
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - <b>C/C++, Python, PyTorch, TensorFlow, Git, CUDA, TensorRT</b>
+
+- title: Interests
+  type: nested_list
+  contents:
+    - items: 
+        - Optimization
+        - Camera & Imaging
+        - Data pipeline optimization
+        - Computer Vision
+        - Speech
+
+    # - title: Topic 2.
+    #   items:
+    #     - Description 1.
+    #     - Description 2.
+
+
