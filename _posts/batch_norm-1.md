@@ -1,0 +1,7 @@
+---
+layout: post
+title: Batch Normalization - 1 | Using tf.nn.batch_normalization
+date: 2022-07-05
+description: Learn how to use tf.nn.batch_normalization in tensorflow. 
+redirect: https://www.divakar-verma.com/post/batch-normalization-tensorflow
+---
