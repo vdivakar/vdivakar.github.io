@@ -4,7 +4,7 @@ title: Deep De-mosaicing
 description: De-mosaicing using CNNs
 img: assets/img/demosaic.jpg.webp
 importance: 4
-category: fun
+category: past #work
 ---
 
 Demosaicing using CNNs (Samsung)

@@ -4,7 +4,7 @@ title: AI HDR
 description: Single Image HDR reconstruction & enhancement(Samsung)
 img: assets/img/AIhdr.jpg.webp
 importance: 3
-category: fun
+category: past #work
 ---
 
 Single Image HDR reconstruction & enhancement(Samsung)

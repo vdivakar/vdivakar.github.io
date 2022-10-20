@@ -4,7 +4,7 @@ title: Plotting equations
 description: Plotting graph of equations and their intersection
 img: assets/img/2cylinders.png.webp
 importance: 2
-category: work
+category: fun
 ---
 
 

@@ -4,7 +4,7 @@ title: Text-to-Speech and Decoder
 description: Speech recognition for Hindi language
 img: assets/logo/flipkart.png
 importance: 3
-category: work
+category: past #work
 ---
 
 
