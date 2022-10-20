@@ -9,7 +9,7 @@ category: past #work
 
 
 Text-to-Speech model for Hindi language (Flipkart):- 
-The aim of this project was to generate audio speech in Hindi language for the given text sentences.  I started on this project while I was working with Flipkart.
+The aim of this project was to generate audio speech in Hindi language for the given text sentences.  I started on this project while I was working with Flipkart. 
 ​
 Key learnings:
  - Unsupervised generative models
