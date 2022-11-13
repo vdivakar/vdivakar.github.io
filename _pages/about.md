@@ -18,7 +18,7 @@ profile:
 
 news: true  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+social: false  # includes social icons at the bottom of the page
 ---
 
 I'm currently studying Advanced Computer Vision courses at the Princeton University under [Prof. Jia Deng](https://www.cs.princeton.edu/~jiadeng/) and [Prof. Olga Russakovsky](https://www.cs.princeton.edu/~olgarus/). I'm enrolled as a Masters in Computer Science at the Rutgers University [Graduating in May 2023].
