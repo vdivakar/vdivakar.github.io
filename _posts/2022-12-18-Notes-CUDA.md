@@ -3,6 +3,7 @@ layout: post
 title: Notes CUDA
 date: 2022-12-11
 description: self-notes
+selected: true
 ---
 
 Notes for CUDA
