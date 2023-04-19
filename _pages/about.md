@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: Software Engineer | AI | ML Inference | Computer Vision
 
@@ -25,8 +25,11 @@ My broad interests:
 - ML model Inference and Performance Optimisation
 - Computer Vision; Camera; Imaging
 
-I'm currently studying Advanced Computer Vision courses at the Princeton University under [Prof. Jia Deng](https://www.cs.princeton.edu/~jiadeng/) and [Prof. Olga Russakovsky](https://www.cs.princeton.edu/~olgarus/). I'm enrolled as a Masters in Computer Science at the Rutgers University [Graduating in May 2023].
+I carry **3 years of work experience** shipping AI based sofware solutions. I'm enrolled as a Masters in Computer Science at the Rutgers University [Graduating in __May 2023__] and currently working as an AI Research Assistant at the [Abraira Lab](https://www.abrairalab.org) on a video classification project.
 
-I carry **3 years of work experience** shipping AI based sofware solutions. I recently interned at Nvidia where I worked on the [Inference pipeline of a Speech model](https://www.linkedin.com/posts/divakar-verma_serving-rnn-t-speech-to-text-model-on-triton-activity-6972944540781395968-PDbx/?utm_source=share&utm_medium=member_desktop). Previously, I worked with Samsung R&D Institute and Flipart Inc. to ship Camera-Imaging and Speech solutions respectively.
+Last summer I interned at Nvidia as a Deep Learning Performance Engineer to develop a [highly optimised Inference pipeline](https://www.linkedin.com/posts/divakar-verma_serving-rnn-t-speech-to-text-model-on-triton-activity-6972944540781395968-PDbx/?utm_source=share&utm_medium=member_desktop) of RNN-T Speech model for MLPerf-Inference benchmark. Previously, I worked with Samsung R&D Institute and Flipart Inc. to ship Camera-Imaging and Speech solutions respectively.
+
+<!-- I'm currently studying Advanced Computer Vision courses at the Princeton University under [Prof. Jia Deng](https://www.cs.princeton.edu/~jiadeng/) and [Prof. Olga Russakovsky](https://www.cs.princeton.edu/~olgarus/). -->
+
 
 <!-- Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
