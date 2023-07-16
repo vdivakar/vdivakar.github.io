@@ -94,8 +94,17 @@
               {%- endif -%}
               {%- endif -%}
               {% endfor -%}
-              {%- if site.enable_darkmode %}
 
+              <!-- Travel Map -->
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.traveledmap.com/traveledmap/OveBwzSNP6R0pny5S7Q0Ih2bpqt2#">{{ "🌐" }}
+                  <!-- {%- if page.title == p.title -%} -->
+                  <span class="sr-only">(current)</span>
+                  <!-- {%- endif -%} -->
+                </a>
+              </li>
+
+              {%- if site.enable_darkmode %}
               <!-- Toogle theme mode -->
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
@@ -103,7 +112,7 @@
                   <i class="fas fa-sun"></i>
                 </button>
               </li>
-              {%- endif %}
+              {%- endif %}             
             </ul>
           </div>
         </div>
