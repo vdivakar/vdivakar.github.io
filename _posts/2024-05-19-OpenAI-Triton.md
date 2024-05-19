@@ -7,6 +7,8 @@ selected: true
 ---
 
 1. **Simple Vector addition**
+    - One limitation of Triton: `BLOCK_SIZE` must be a power-of-2
+
     ```python
     ''' Simple Vector addition '''
     import torch
