@@ -63,4 +63,12 @@ selected: true
 </div>
 
 
+2. **Simple Matrix Multiplication**
+    - 4x4 Matrix: `tl.arange(0,4)[:, None] + tl.arange(0,4)[None, :]`
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/openAI-Triton/matmul.jpeg" title="vector_add image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/openAI-Triton/stride.jpeg" title="vector_add image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
