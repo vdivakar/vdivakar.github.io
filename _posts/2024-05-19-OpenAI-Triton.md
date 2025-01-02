@@ -72,4 +72,4 @@ selected: true
     </div>
 </div>
 
-3. **Testing**
+3. Que: How to print tensor's shape from inside the triton kernel?
