@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waveform superposition</title>
+<style>
+  :root {
+    --surface-page: #ffffff;
+    --surface-card: #f6f5f2;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --border: rgba(11,11,11,0.10);
+    --text-success: #0ca30c;
+    --color-a: #2a78d6;
+    --color-b: #eb6834;
+    --color-combined: #4a3aa7;
+    --gap-fill: rgba(137,135,129,0.22);
+    --zero-line: #c3c2b7;
+    --grid-line: #e1e0d9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-page: #141413;
+      --surface-card: #1f1f1e;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --border: rgba(255,255,255,0.10);
+      --text-success: #3ecf3e;
+      --color-a: #3987e5;
+      --color-b: #d95926;
+      --color-combined: #9085e9;
+      --gap-fill: rgba(137,135,129,0.18);
+      --zero-line: #383835;
+      --grid-line: #2c2c2a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-page);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .intro {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin: 0 0 2rem;
+    max-width: 62ch;
+  }
+  .controls-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 0 1rem;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  button:hover { background: var(--surface-card); }
+  .slider-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 160px;
+  }
+  .slider-group label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+  input[type="range"] { flex: 1; accent-color: var(--color-combined); }
+  .slider-group span {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 30px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 1.5rem 0 1.25rem;
+  }
+  .stat-card {
+    background: var(--surface-card);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .stat-card p:first-child {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 4px;
+  }
+  .stat-card p:last-child {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  #stat-t-badge { font-size: 12px; font-weight: 600; color: var(--text-success); }
+  .legend {
+    display: flex;
+    gap: 16px;
+    margin: 0 0 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+  }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .chart-wrap { position: relative; width: 100%; height: 300px; }
+  footer {
+    margin-top: 2rem;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  footer a { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Waveform superposition</h1>
+  <p class="intro">
+    Two independent random waveforms, blended from a random walk and a sine wave.
+    A third line shows their average &mdash; combining two independent signals
+    naturally smooths out the extremes.
+  </p>
+
+  <div class="controls-row">
+    <button id="regen-btn"><span>&#8635;</span> Regenerate</button>
+    <div class="slider-group">
+      <label for="blend">Random &harr; Sine</label>
+      <input type="range" id="blend" min="0" max="1" step="0.05" value="0.6" />
+      <span id="blend-out">0.60</span>
+    </div>
+    <div class="slider-group">
+      <label for="roughness">Roughness</label>
+      <input type="range" id="roughness" min="0.2" max="3" step="0.1" value="1" />
+      <span id="roughness-out">1.0</span>
+    </div>
+  </div>
+  <div class="controls-row">
+    <div class="slider-group">
+      <label for="freq1">Signal 1 frequency</label>
+      <input type="range" id="freq1" min="1" max="10" step="1" value="3" />
+      <span id="freq1-out">3</span>
+    </div>
+    <div class="slider-group">
+      <label for="freq2">Signal 2 frequency</label>
+      <input type="range" id="freq2" min="1" max="10" step="1" value="6" />
+      <span id="freq2-out">6</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <p>Signal 1 volatility</p>
+      <p id="stat-h">&ndash;</p>
+    </div>
+    <div class="stat-card">
+      <p>Signal 2 volatility</p>
+      <p id="stat-w">&ndash;</p>
+    </div>
+    <div class="stat-card">
+      <p>Combined volatility</p>
+      <p><span id="stat-t">&ndash;</span><span id="stat-t-badge"></span></p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--color-a)"></span>Signal 1</span>
+    <span><span class="dot" style="background:var(--color-b)"></span>Signal 2</span>
+    <span><span class="dot" style="background:var(--color-combined)"></span>Combined (average)</span>
+    <span><span class="dot" style="background:var(--gap-fill)"></span>Difference</span>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="waveChart" role="img" aria-label="Line chart comparing two independent waveforms with their averaged combined line, showing reduced volatility when combined">
+      Combined waveform chart
+    </canvas>
+  </div>
+
+  <footer>
+    Built with a random-walk / sine blend model. Drag the sliders and hit regenerate to explore.
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function generateWaveLikeWaveform(nPoints, xMax, stepStd, blend, freq) {
+  const x = [];
+  const y = [];
+  let walkCur = 0;
+  const amplitude = xMax / 12;
+  for (let i = 0; i < nPoints; i++) {
+    const xv = (i / (nPoints - 1)) * xMax;
+    x.push(xv);
+    const u1 = Math.random();
+    const u2 = Math.random();
+    const gaussian = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    walkCur += gaussian * stepStd;
+    const sineVal = amplitude * Math.sin((2 * Math.PI * freq * xv) / xMax);
+    const val = (1 - blend) * walkCur + blend * sineVal;
+    y.push(Math.round(val * 100) / 100);
+  }
+  return { x, y };
+}
+
+function stdDev(arr) {
+  const mean = arr.reduce((a, b) => a + b, 0) / arr.length;
+  const variance = arr.reduce((a, b) => a + (b - mean) * (b - mean), 0) / arr.length;
+  return Math.sqrt(variance);
+}
+
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const colorA = cssVar("--color-a");
+const colorB = cssVar('--color-b');
+const colorC = cssVar('--color-combined');
+const gapColor = cssVar('--gap-fill');
+const zeroLineColor = cssVar('--zero-line');
+const gridColor = cssVar('--grid-line');
+const mutedColor = cssVar('--text-muted');
+
+const ctx = document.getElementById('waveChart');
+let chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [
+      { label: 'Signal 1', data: [], borderColor: colorA, borderWidth: 1.5, pointRadius: 0, tension: 0.2, fill: false, borderDash: [4, 3] },
+      { label: 'Signal 2', data: [], borderColor: colorB, borderWidth: 1.5, pointRadius: 0, tension: 0.2, fill: '-1', backgroundColor: gapColor, borderDash: [4, 3] },
+      { label: 'Combined', data: [], borderColor: colorC, borderWidth: 2.5, pointRadius: 0, tension: 0.2, fill: false }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: {
+        title: { display: true, text: 'time', color: mutedColor },
+        ticks: { color: mutedColor, maxTicksLimit: 8 },
+        grid: { color: gridColor }
+      },
+      y: {
+        title: { display: true, text: 'mood / energy', color: mutedColor },
+        ticks: { color: mutedColor },
+        grid: {
+          color: (c) => c.tick.value === 0 ? zeroLineColor : gridColor,
+          lineWidth: (c) => c.tick.value === 0 ? 1.5 : 1
+        }
+      }
+    }
+  }
+});
+
+function regenerate() {
+  const stepStd = parseFloat(document.getElementById('roughness').value);
+  const blend = parseFloat(document.getElementById('blend').value);
+  const freq1 = parseInt(document.getElementById('freq1').value);
+  const freq2 = parseInt(document.getElementById('freq2').value);
+
+  const wh = generateWaveLikeWaveform(300, 100, stepStd, blend, freq1);
+  const ww = generateWaveLikeWaveform(300, 100, stepStd, blend, freq2);
+  const combinedSignal = wh.y.map((v, i) => Math.round(((v + ww.y[i]) / 2) * 100) / 100);
+
+  chart.data.labels = wh.x.map(v => v.toFixed(0));
+  chart.data.datasets[0].data = wh.y;
+  chart.data.datasets[1].data = ww.y;
+  chart.data.datasets[2].data = combinedSignal;
+  chart.update();
+
+  const sH = stdDev(wh.y);
+  const sW = stdDev(ww.y);
+  const sT = stdDev(combinedSignal);
+  const avgIndividual = (sH + sW) / 2;
+  const reduction = Math.round((1 - sT / avgIndividual) * 100);
+
+  document.getElementById('stat-h').textContent = sH.toFixed(1);
+  document.getElementById('stat-w').textContent = sW.toFixed(1);
+  document.getElementById('stat-t').textContent = sT.toFixed(1);
+  document.getElementById('stat-t-badge').textContent = reduction > 0 ? ('\u2193 ' + reduction + '% smoother') : '';
+}
+
+document.getElementById('regen-btn').addEventListener('click', regenerate);
+document.getElementById('blend').addEventListener('input', (e) => {
+  document.getElementById('blend-out').textContent = parseFloat(e.target.value).toFixed(2);
+});
+document.getElementById('roughness').addEventListener('input', (e) => {
+  document.getElementById('roughness-out').textContent = parseFloat(e.target.value).toFixed(1);
+});
+document.getElementById('freq1').addEventListener('input', (e) => {
+  document.getElementById('freq1-out').textContent = e.target.value;
+});
+document.getElementById('freq2').addEventListener('input', (e) => {
+  document.getElementById('freq2-out').textContent = e.target.value;
+});
+['blend', 'roughness', 'freq1', 'freq2'].forEach(id => {
+  document.getElementById(id).addEventListener('change', regenerate);
+});
+
+regenerate();
+</script>
+</body>
+</html>
